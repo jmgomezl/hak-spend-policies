@@ -1,0 +1,71 @@
+{
+  "name": "hak-spend-policies",
+  "version": "0.1.0",
+  "description": "Spending policies for the Hedera Agent Kit: per-transaction caps, daily caps, payee allowlists and time windows, with a native Scheduled Transaction approval step when a payment goes over the cap",
+  "type": "module",
+  "license": "MIT",
+  "author": "Juanma Gomez",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmgomezl/hak-spend-policies.git"
+  },
+  "homepage": "https://github.com/jmgomezl/hak-spend-policies#readme",
+  "bugs": {
+    "url": "https://github.com/jmgomezl/hak-spend-policies/issues"
+  },
+  "keywords": [
+    "hedera",
+    "agent-kit",
+    "hedera-agent-kit",
+    "policy",
+    "spending-limit",
+    "allowlist",
+    "scheduled-transaction",
+    "human-in-the-loop",
+    "agent-accounts",
+    "ai-agent"
+  ],
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist", "README.md", "LICENSE"],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "biome check .",
+    "format": "biome format . --write",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:integration": "node scripts/integration-test.mjs",
+    "approve": "node scripts/approve.mjs",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build",
+    "prepare": "npm run build"
+  },
+  "peerDependencies": {
+    "@hashgraph/hedera-agent-kit": "^4.1.0",
+    "@hiero-ledger/sdk": "^2.84.0"
+  },
+  "dependencies": {
+    "zod": "^3.22.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.0",
+    "@hashgraph/hedera-agent-kit": "^4.1.1",
+    "@hiero-ledger/sdk": "^2.84.0",
+    "@types/node": "^20.11.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.3.0",
+    "vitest": "^1.6.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
